@@ -4,7 +4,11 @@ PYTHONPATH=$PYTHONPATH:$CARLA_ROOT/PythonAPI/carla/dist/carla-0.9.8-py3.5-linux-
 PYTHONPATH=$PYTHONPATH:leaderboard
 PYTHONPATH=$PYTHONPATH:scenario_runner
 
-CHECKPOINT_ENDPOINT="$TEAM_CONFIG/$(basename $ROUTES .xml).txt"
+if [ -d "$TEAM_CONFIG" ]; then
+    CHECKPOINT_ENDPOINT="$TEAM_CONFIG/$(basename $ROUTES .xml).txt"
+else
+    CHECKPOINT_ENDPOINT="$(dirname $TEAM_CONFIG)/$(basename $ROUTES .xml).txt"
+fi
 
 python leaderboard/leaderboard/leaderboard_evaluator.py \
 --challenge-mode \
