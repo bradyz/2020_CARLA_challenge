@@ -51,7 +51,11 @@ export CARLA_ROOT=/home/bradyzhou/software/CARLA_0.9.8      # change to where yo
 export PORT=2000                                            # change to port that CARLA is running on
 export ROUTES=leaderboard/data/routes/route_00.xml          # change to desired route
 export TEAM_AGENT=scenario_runner/team_code/auto_pilot.py   # no need to change
-export TEAM_CONFIG=data                                     # change path to save data
+export TEAM_CONFIG=sample_data                              # change path to save data
 
 ./run_agent.sh
 ```
+
+## Run a pretrained model
+
+## Training models from scratch
