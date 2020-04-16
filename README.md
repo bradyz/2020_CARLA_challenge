@@ -16,11 +16,26 @@ If you find our repo to be useful in your research, please consider citing our w
 }
 ```
 
+## Installation
+
+Clone this repo with all its submodules
+
+```bash
+git clone https://github.com/bradyz/2020_CARLA_challenge.git --recursive
+```
+
+All python packages used are specified in `carla_project/requirements.txt`.
+
+You will also need to install CARLA 0.9.8, along with the additional maps.
+See [link](https://github.com/carla-simulator/carla/releases/tag/0.9.8) for more instructions.
+
 ## Dataset
 
 We provide a dataset of over 70k samples collected over the 75 routes provided in `leaderboard/data/routes_*.xml`.
 
 [Link to full dataset (9 GB)](https://drive.google.com/file/d/1dwt9_EvXB1a6ihlMVMyYx0Bw0mN27SLy/view?usp=sharing).
+
+![sample](assets/sample_route.gif)
 
 The dataset is collected using `scenario_runner/team_code/autopilot.py`, using painfully hand-designed rules (i.e. if pedestrian is 5 meters ahead, then brake).
 
@@ -58,4 +73,36 @@ export TEAM_CONFIG=sample_data                              # change path to sav
 
 ## Run a pretrained model
 
+Download the checkpoint from here and run the following.
+
+```bash
+export CARLA_ROOT=/home/bradyzhou/software/CARLA_0.9.8      # change to where you installed CARLA
+export PORT=2000                                            # change to port that CARLA is running on
+export ROUTES=leaderboard/data/routes/route_00.xml          # change to desired route
+export TEAM_AGENT=scenario_runner/team_code/image_agent.py  # no need to change
+export TEAM_CONFIG=model.ckpt                               # change path to checkpoint
+
+./run_agent.sh
+```
+
 ## Training models from scratch
+
+First, download and extract our provided dataset.
+
+Then run the stage 1 training of the privileged agent.
+
+```python
+python3 -m carla_project/src/map_model --dataset_dir /path/to/data
+```
+
+We use wandb for logging, so navigate to the generated experiment page to visualize training.
+
+![sample](assets/stage_1.gif)
+
+If you're interested in tuning hyperparameters, see `carla_project/src/map_model.py` for more detail.
+
+Training the sensorimotor agent (acts only on raw images) is similar, and can be done by
+
+```python
+python3 -m carla_project/src/image_model --dataset_dir /path/to/data
+```
