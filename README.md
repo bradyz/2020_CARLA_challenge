@@ -61,6 +61,14 @@ The autopilot that we used to collect the data can use a lot of work and current
 
 If you're interested in recollecting data after changing the autopilot's driving behavior in `scenario_runner/team_code/autopilot.py`, you can collect your own dataset by running the following.
 
+First, spin up a CARLA server
+
+```bash
+./CarlaUE4.sh -quality-level=Epic -world-port=2000 -resx=800 -resy=600 -opengl
+```
+
+then run the agent.
+
 ```bash
 export CARLA_ROOT=/home/bradyzhou/software/CARLA_0.9.8      # change to where you installed CARLA
 export PORT=2000                                            # change to port that CARLA is running on
@@ -73,7 +81,15 @@ export TEAM_CONFIG=sample_data                              # change path to sav
 
 ## Run a pretrained model
 
-Download the checkpoint from here and run the following.
+Download the checkpoint from here (to be added).
+
+Spin up a CARLA server
+
+```bash
+./CarlaUE4.sh -quality-level=Epic -world-port=2000 -resx=800 -resy=600 -opengl
+```
+
+then run the agent.
 
 ```bash
 export CARLA_ROOT=/home/bradyzhou/software/CARLA_0.9.8      # change to where you installed CARLA
@@ -109,22 +125,30 @@ python3 -m carla_project/src/image_model --dataset_dir /path/to/data
 
 ## Docker
 
-Build the docker container to submit
+Build the docker container to submit, make sure to edit `scripts/Dockerfile.master` appropriately.
 
 ```bash
 sudo ./scripts/make_docker.sh
 ```
 
-Run the docker container.
+Spin up a CARLA server
+
+```bash
+./CarlaUE4.sh -quality-level=Epic -world-port=2000 -resx=800 -resy=600 -opengl
+```
+
+Now you can either run the docker container or run it interactively.
+
+To run the docker container,
 
 ```bash
 sudo docker run --net=host --gpus all -e NVIDIA_VISIBLE_DEVICES=0 -e REPETITIONS=1 -e DEBUG_CHALLENGE=0 -e PORT=2000 -e ROUTES=leaderboard/data/routes_devtest.xml -e CHECKPOINT_ENDPOINT=tmp.txt -e SCENARIOS=leaderboard/data/all_towns_traffic_scenarios_public.json leaderboard-user:latest ./leaderboard/scripts/run_evaluation.sh
 ```
 
-Run your docker container in interactive mode
+Or if you need to debug something, you can run it interactively
 
 ```bash
-sudo docker run --net=host --gpus all -it leaderboard-user:latest /bin/bas
+sudo docker run --net=host --gpus all -it leaderboard-user:latest /bin/bash
 ```
 
 Run the evaluation through the interactive shell.
@@ -141,3 +165,7 @@ conda activate python37
 
 ./leaderboard/scripts/run_evaluation.sh
 ```
+
+## Submitting to the evaluation server
+
+# TODO
