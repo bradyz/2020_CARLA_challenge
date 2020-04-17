@@ -106,3 +106,38 @@ Training the sensorimotor agent (acts only on raw images) is similar, and can be
 ```python
 python3 -m carla_project/src/image_model --dataset_dir /path/to/data
 ```
+
+## Docker
+
+Build the docker container to submit
+
+```bash
+sudo ./scripts/make_docker.sh
+```
+
+Run the docker container.
+
+```bash
+sudo docker run --net=host --gpus all -e NVIDIA_VISIBLE_DEVICES=0 -e REPETITIONS=1 -e DEBUG_CHALLENGE=0 -e PORT=2000 -e ROUTES=leaderboard/data/routes_devtest.xml -e CHECKPOINT_ENDPOINT=tmp.txt -e SCENARIOS=leaderboard/data/all_towns_traffic_scenarios_public.json leaderboard-user:latest ./leaderboard/scripts/run_evaluation.sh
+```
+
+Run your docker container in interactive mode
+
+```bash
+sudo docker run --net=host --gpus all -it leaderboard-user:latest /bin/bas
+```
+
+Run the evaluation through the interactive shell.
+
+```bash
+export PORT=2000
+export DEBUG_CHALLENGE=0
+export REPETITIONS=1
+export ROUTES=leaderboard/data/routes_devtest.xml
+export CHECKPOINT_ENDPOINT=tmp.txt
+export SCENARIOS=leaderboard/data/all_towns_traffic_scenarios_public.json
+
+conda activate python37
+
+./leaderboard/scripts/run_evaluation.sh
+```
