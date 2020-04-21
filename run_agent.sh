@@ -1,8 +1,9 @@
 #!/bin/bash
-PYTHONPATH=$PYTHONPATH:$CARLA_ROOT/PythonAPI/carla
-PYTHONPATH=$PYTHONPATH:$CARLA_ROOT/PythonAPI/carla/dist/carla-0.9.8-py3.5-linux-x86_64.egg
-PYTHONPATH=$PYTHONPATH:leaderboard
-PYTHONPATH=$PYTHONPATH:scenario_runner
+export PYTHONPATH=$PYTHONPATH:$CARLA_ROOT/PythonAPI/carla
+export PYTHONPATH=$PYTHONPATH:$CARLA_ROOT/PythonAPI/carla/dist/carla-0.9.8-py3.5-linux-x86_64.egg
+export PYTHONPATH=$PYTHONPATH:leaderboard
+export PYTHONPATH=$PYTHONPATH:leaderboard/team_code
+export PYTHONPATH=$PYTHONPATH:scenario_runner
 
 if [ -d "$TEAM_CONFIG" ]; then
     CHECKPOINT_ENDPOINT="$TEAM_CONFIG/$(basename $ROUTES .xml).txt"
