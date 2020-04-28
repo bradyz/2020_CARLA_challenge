@@ -103,6 +103,7 @@ export PORT=2000                                            # change to port tha
 export ROUTES=leaderboard/data/routes/route_19.xml          # change to desired route
 export TEAM_AGENT=scenario_runner/team_code/image_agent.py  # no need to change
 export TEAM_CONFIG=model.ckpt                               # change path to checkpoint
+export HAS_DISPLAY=1                                        # set to 0 if you don't want a debug window
 
 ./run_agent.sh
 ```
