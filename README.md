@@ -26,8 +26,10 @@ git clone https://github.com/bradyz/2020_CARLA_challenge.git --recursive
 
 All python packages used are specified in `carla_project/requirements.txt`.
 
-You will also need to install CARLA 0.9.8, along with the additional maps.
-See [link](https://github.com/carla-simulator/carla/releases/tag/0.9.8) for more instructions.
+This code uses CARLA 0.9.9 and works with CARLA 0.9.8.
+
+You will also need to install CARLA 0.9.9, along with the additional maps.
+See [link](https://github.com/carla-simulator/carla/releases/tag/0.9.9) for more instructions.
 
 ## Dataset
 
@@ -70,9 +72,9 @@ First, spin up a CARLA server
 then run the agent.
 
 ```bash
-export CARLA_ROOT=/home/bradyzhou/software/CARLA_0.9.8      # change to where you installed CARLA
+export CARLA_ROOT=/home/bradyzhou/software/CARLA_0.9.9      # change to where you installed CARLA
 export PORT=2000                                            # change to port that CARLA is running on
-export ROUTES=leaderboard/data/routes/route_00.xml          # change to desired route
+export ROUTES=leaderboard/data/routes/route_19.xml          # change to desired route
 export TEAM_AGENT=scenario_runner/team_code/auto_pilot.py   # no need to change
 export TEAM_CONFIG=sample_data                              # change path to save data
 
@@ -81,7 +83,11 @@ export TEAM_CONFIG=sample_data                              # change path to sav
 
 ## Run a pretrained model
 
-Download the checkpoint from here (to be added).
+Download the checkpoint from our [Wandb project](https://app.wandb.ai/bradyz/2020_carla_challenge_lbc).
+
+Navigate to one of the runs, like https://app.wandb.ai/bradyz/2020_carla_challenge_lbc/runs/command_coefficient=0.01_sample_by=even_stage2/files
+
+Go to the "files" tab, and download the model weights, named "epoch=24.ckpt", and pass in the file path as the `TEAM_CONFIG` below.
 
 Spin up a CARLA server
 
@@ -92,9 +98,9 @@ Spin up a CARLA server
 then run the agent.
 
 ```bash
-export CARLA_ROOT=/home/bradyzhou/software/CARLA_0.9.8      # change to where you installed CARLA
+export CARLA_ROOT=/home/bradyzhou/software/CARLA_0.9.9      # change to where you installed CARLA
 export PORT=2000                                            # change to port that CARLA is running on
-export ROUTES=leaderboard/data/routes/route_00.xml          # change to desired route
+export ROUTES=leaderboard/data/routes/route_19.xml          # change to desired route
 export TEAM_AGENT=scenario_runner/team_code/image_agent.py  # no need to change
 export TEAM_CONFIG=model.ckpt                               # change path to checkpoint
 
@@ -165,7 +171,3 @@ conda activate python37
 
 ./leaderboard/scripts/run_evaluation.sh
 ```
-
-## Submitting to the evaluation server
-
-# TODO
