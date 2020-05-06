@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CARLA_ROOT=/home/bradyzhou/software/CARLA_0.9.8
+CARLA_ROOT=/home/bradyzhou/software/CARLA_0.9.9
 SCENARIO_RUNNER_ROOT=/home/bradyzhou/code/2020_CARLA_challenge/scenario_runner
 LEADERBOARD_ROOT=/home/bradyzhou/code/2020_CARLA_challenge/leaderboard
 

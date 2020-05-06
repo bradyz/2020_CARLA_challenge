@@ -71,6 +71,7 @@ RUN chmod +x /workspace/leaderboard/scripts/run_evaluation.sh
 COPY .tmp/carla_project /workspace/carla_project
 
 ENV PYTHONPATH "/workspace/CARLA/PythonAPI/carla/dist/carla-0.9.8-py3.5-linux-x86_64.egg":${PYTHONPATH}
+ENV PYTHONPATH "/workspace/CARLA/PythonAPI/carla/dist/carla-0.9.9-py3.7-linux-x86_64.egg":${PYTHONPATH}
 ENV PYTHONPATH "/workspace/":${PYTHONPATH}
 ENV TEAM_AGENT /workspace/leaderboard/team_code/image_agent.py
 ENV TEAM_CONFIG /workspace/leaderboard/team_code/model.ckpt
