@@ -16,6 +16,8 @@ If you find our repo to be useful in your research, please consider citing our w
 }
 ```
 
+The code in this repo is based off of [link](https://github.com/dianchen96/LearningByCheating), which contains the code for the NoCrash and CoRL 17 benchmarks.
+
 ## Installation
 
 Clone this repo with all its submodules
@@ -39,7 +41,7 @@ We provide a dataset of over 70k samples collected over the 75 routes provided i
 
 ![sample](assets/sample_route.gif)
 
-The dataset is collected using `scenario_runner/team_code/autopilot.py`, using painfully hand-designed rules (i.e. if pedestrian is 5 meters ahead, then brake).
+The dataset is collected using `leaderboard/team_code/autopilot.py`, using painfully hand-designed rules (i.e. if pedestrian is 5 meters ahead, then brake).
 
 Additionally, we change the weather for a single route once every couple of seconds to add visual diversity as a sort of on-the-fly augmentation.
 The simulator is run at 20 FPS, and we save the following data at 2 Hz.
@@ -61,7 +63,7 @@ python3 -m carla_project.src.dataset sample_data/route_00/
 
 The autopilot that we used to collect the data can use a lot of work and currently does not support stop signs.
 
-If you're interested in recollecting data after changing the autopilot's driving behavior in `scenario_runner/team_code/autopilot.py`, you can collect your own dataset by running the following.
+If you're interested in recollecting data after changing the autopilot's driving behavior in `leaderboard/team_code/autopilot.py`, you can collect your own dataset by running the following.
 
 First, spin up a CARLA server
 
