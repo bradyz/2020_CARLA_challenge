@@ -28,10 +28,10 @@ git clone https://github.com/bradyz/2020_CARLA_challenge.git --recursive
 
 All python packages used are specified in `carla_project/requirements.txt`.
 
-This code uses CARLA 0.9.9 and works with CARLA 0.9.8.
+This code uses CARLA 0.9.9 and works with CARLA 0.9.8, **0.9.10.1**.
 
-You will also need to install CARLA 0.9.9, along with the additional maps.
-See [link](https://github.com/carla-simulator/carla/releases/tag/0.9.9) for more instructions.
+You will also need to install CARLA 0.9.10.1, along with the additional maps.
+See [link](https://github.com/carla-simulator/carla/releases/tag/0.9.10.1) for more instructions.
 
 ## Dataset
 
@@ -74,9 +74,9 @@ First, spin up a CARLA server
 then run the agent.
 
 ```bash
-export CARLA_ROOT=/home/bradyzhou/software/CARLA_0.9.10             # change to where you installed CARLA
+export CARLA_ROOT=/home/bradyzhou/software/CARLA_0.9.10.1           # change to where you installed CARLA
 export PORT=2000                                                    # change to port that CARLA is running on
-export ROUTES=leaderboard/data/routes/routes_training/route_19.xml  # change to desired route
+export ROUTES=leaderboard/data/routes_training/route_19.xml         # change to desired route
 export TEAM_AGENT=auto_pilot.py                                     # no need to change
 export TEAM_CONFIG=sample_data                                      # change path to save data
 
@@ -100,9 +100,9 @@ Spin up a CARLA server
 then run the agent.
 
 ```bash
-export CARLA_ROOT=/home/bradyzhou/software/CARLA_0.9.10             # change to where you installed CARLA
+export CARLA_ROOT=/home/bradyzhou/software/CARLA_0.9.10.1           # change to where you installed CARLA
 export PORT=2000                                                    # change to port that CARLA is running on
-export ROUTES=leaderboard/data/routes/routes_training/route_19.xml  # change to desired route
+export ROUTES=leaderboard/data/routes_training/route_19.xml         # change to desired route
 export TEAM_AGENT=image_agent.py                                    # no need to change
 export TEAM_CONFIG=model.ckpt                                       # change path to checkpoint
 export HAS_DISPLAY=1                                                # set to 0 if you don't want a debug window
@@ -166,7 +166,7 @@ Run the evaluation through the interactive shell.
 export PORT=2000
 export DEBUG_CHALLENGE=0
 export REPETITIONS=1
-export ROUTES=leaderboard/data/routes_devtest.xml
+export ROUTES=leaderboard/data/routes_devtest/route_00.xml         # change to desired route
 export CHECKPOINT_ENDPOINT=tmp.txt
 export SCENARIOS=leaderboard/data/all_towns_traffic_scenarios_public.json
 
