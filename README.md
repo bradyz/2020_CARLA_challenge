@@ -117,14 +117,15 @@ First, download and extract our provided dataset.
 Then run the stage 1 training of the privileged agent.
 
 ```python
-python3 -m carla_project/src/map_model --dataset_dir /path/to/data
+python3 -m carla_project/src/map_model --dataset_dir /path/to/data --hack
 ```
 
 We use wandb for logging, so navigate to the generated experiment page to visualize training.
 
-![sample](assets/stage_1.gif)
+**Important**: If you're interested in tuning hyperparameters, see `carla_project/src/map_model.py` for more detail.  
+To see what hyperparameters we used for our models, you can see all of them by navigating to the corresponding [wandb run config](https://wandb.ai/bradyz/2020_carla_challenge_lbc/runs/command_coefficient=0.01_sample_by=even_stage2/overview).
 
-If you're interested in tuning hyperparameters, see `carla_project/src/map_model.py` for more detail.
+![sample](assets/stage_1.gif)
 
 Training the sensorimotor agent (acts only on raw images) is similar, and can be done by
 
